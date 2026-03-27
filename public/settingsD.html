@@ -1,0 +1,34 @@
+<br />
+<form onkeypress="return event.keyCode != 13;">
+    <fieldset>
+        <h6 class="setting_head">Gleitende Mittelwert-Bildung bei 24-Stunden-Darstellung über</h6>
+        <div id="avgselect">
+            <select  name = 'average' id='average'>
+            </select>
+            <br /><br />
+        </div>
+            <div id="bandgap">
+                <input id="bandgap_in" type="checkbox" >
+                <label for="bandgap_in">Langzeit-Mittelwert mit Bereich anzeigen</label>
+            </div>
+        <div id="bandgapregion">
+            <div id="bandgapset">
+                <label>Zeitbereich für Langzeit-Mittelwert:
+                    <select name="bandgapval" id="bandgapval" disabled>
+                        <option selected>48 h</option>
+                        <option>72 h</option>
+                        <option>96 h</option>
+                        <option>120 h</option>
+                    </select>
+                </label>
+            </div>
+            <div id="bandgapran">
+                <label>Bereich in Prozent (5..50):<br />
+                    <input id="bandgapran_in" type="number" value="15" min="5" max="50" disabled>
+                </label>
+            </div>
+        </div>
+        <input type='submit' tabindex='-1' style="position:absolute; top:-1000px">
+    </fieldset>
+</form>
+

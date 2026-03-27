@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div id='help' style="font-family: 'arial';">
+        <h2>Warum wird mein Sensor <span class="psensornr"> Nr. </span> nicht angezeigt?</h2>
+
+        <p>
+            Es gibt viele Gründe, warum ein bestimmter Sensor nicht auf der Karte erscheint:
+            <ul>
+            <li>Der Sensor sendet schon über eine Woche keine Daten (mehr) zum Server</li>
+            <li>Der Sensor ist noch nicht an der Datenbank angemeldet (siehe
+                <a href="https://luftdaten.info/feinstaubsensor-bauen">Letzte Schritte</a>
+                auf luftdaten.info (ganz unten).</li>
+            <li>Der Sensor zeigt unsinnige oder unplausible Werte.</li>
+        </ul>
+        </p>
+
+        <p>
+            <h3>Unsinnige und unplausible Werte</h3>
+            Bevor die Daten zu Anzeige kommen, werden sie überprüft. Es wird der Mittelwert über alle Werte
+            von 'gestern' gebildet und daraus dann die folgenden Bedingungen abgeleitet. Sensoren, die mindestens eine
+            dieser Bedingungen erfüllen, werden <b>nicht</b> angezeigt.
+            <ul>
+                <li>Sensoren, die dauernd Werte von 1999 (bei P10) oder 999 (bei P2.5) ausgeben. Diese
+                    Sensoren sind eindeutig defekt (oder ein Tierchen ist in die Laser-Kammer gekrabbelt).</li>
+                <li>Sensoren, die dauernd Werte kleiner 1 für P10 bzw. P2.5 anzeigen. Auch hier ist ein
+                    Defekt (oder eine Verstopfung der Ansaug-Leitung) anzunehmen.</li>
+                <li>Sensoren, die keine oder nur sehr kleine Änderungen im Laufe des Tages gemessen haben.</li>
+                <li>Sensoren, deren P2.5-Wert im Tagesmittel über 50 &mu;g/m<sup>3</sup> liegt</li>
+                <li>Sensoren, bei denen über den ganzen Tag P10 und P2.5 sehr eng beieinander liegen</li>
+                <li>Sensoren, bei denen über den ganzen Tag P10 und P2.5 sehr weit auseinander liegen</li>
+            </ul>
+        </p>
+        <p>
+            <div id="fehlerexplain"></div> <br />
+        </p>
+            Du kannst mir gerne eine email ( <a href="mailto:rexfue@gmail.com">rexfue@gmail.com</a> )
+            schreiben. Vielleicht können wir das Problem gemeinsam lösen.
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+extends layout
+
+block content
+    script.
+         var selName='#{name}';
+         var parm='#{param}';
+         var startday='#{stday}';
+         var typeOfSensor='#{stype}';
+         var stype='#{csensor}';
+         var splash = '#{splash}';
+
+
+    #overlay
+        #buttons
+            #buttonsLeft
+                button.btn.btn-primary#btnmo(value="month") 30 d
+                button.btn.btn-primary#btnwe(value="week") 7 d
+                button.btn.btn-primary#btnda(autofocus="true",value="day") 24 h
+            //#buttonsRight
+                button.btn.btn-primary#btnSet(value='set') Einstellung
+                button.btn.btn-primary#btnMap(value='map') Karte
+                // button.btn.btn-primary#btnStat(value='map') Statistik
+                button.btn.btn-primary#btnHelp(value='help') Info
+
+        #placeholderFS_1
+        #placeholderTHP_1
+        #placeholderFS_2
+        #placeholderTHP_2
+        #placeholderFS_3
+        #placeholderTHP_3
+    #dialogWinSet.dialog
+    #dialogStatistik
+    #dialogWinHelp
+    #dialogNewSensor.dialog
+    #dialogNewDay.dialog
+    #dialogError
+    #dialogymax
+    #page-mask
+
+    #alarm
+        <iframe src="https://www.stuttgart.de/feinstaubalarm/widget/xtrasmall?noAlarm=noOutput" height="90" scrolling="no" style="border:none; width:98%"></iframe>
+
+    img#mySpinner(style='display:none' src="spinner.svg" alt="Lade Daten ...")
+
+
+
