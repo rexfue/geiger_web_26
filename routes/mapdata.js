@@ -69,6 +69,7 @@ router.get('/getaktdata/', async function (req, res) {
     }
     
     try {
+        console.log("getaktdata: Query filter:", JSON.stringify(loc));
         let docs = await collection.find(loc).toArray();
         
         if (docs == null) {

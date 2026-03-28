@@ -1,12 +1,12 @@
 {
-  "name": "multigeiger",
-  "version": "2.9.6",
+  "name": "geiger2",
+  "version": "3.0.0",
   "date": "2022-03-16",
   "description": "Graphics for multigeiger sensors",
-  "main": "geiger-app.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node geiger-app.js >>/var/log/geiger-web.log 2>&1"
+    "start": "node app.js"
   },
   "author": "rxf@gmail.com",
   "license": "ISC",

@@ -1,0 +1,29 @@
+# Docker Compose für lokale Entwicklung
+# Verwendet externen MongoDB Server (wie Produktion)
+# Verwendung: docker compose -f docker-compose.local.yml up
+#
+# HINWEIS: Passe die MongoDB-Verbindungsdaten unten an oder erstelle eine .env.local Datei
+
+services:
+  # Geiger Web Application
+  geiger-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: geiger_web_local
+    restart: unless-stopped
+    env_file:
+      - .env.local
+    environment:
+      # Timezone (kann überschrieben werden)
+      - TZ=${TZ:-Europe/Berlin}
+    ports:
+      - "3005:3005"
+    volumes:
+      - ${PWD}/log:/var/log
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3005/fs/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

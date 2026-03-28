@@ -1,0 +1,64 @@
+# Docker Compose für Server/Produktion
+# Verwendet externen MongoDB Server
+# Verwendung: docker compose -f docker-compose.prod.yml up -d
+#
+# ACHTUNG: Erstelle zuerst eine .env Datei mit den korrekten Werten!
+# Beispiel: cp .env.example .env und dann anpassen
+
+services:
+  geiger-web:
+    image: docker.citysensor.de/geiger_web_26:latest
+    container_name: geiger_web_prod
+    restart: always
+    environment:
+      # Server Configuration
+      - SERVERPORT=${SERVERPORT:-3005}
+      - DEBUG=${DEBUG:-false}
+      
+      # MongoDB Configuration (externer Server)
+      - MONGOHOST=${MONGOHOST}
+      - MONGOPORT=${MONGOPORT:-27017}
+      - MONGOBASE=${MONGOBASE}
+      - MONGOAUTH=${MONGOAUTH:-true}
+      - MONGOUSRP=${MONGOUSRP}
+      
+      # Timezone
+      - TZ=Europe/Berlin
+      
+      # Node Environment
+      - NODE_ENV=production
+    ports:
+      - "${EXTERNAL_PORT:-3005}:3005"
+    volumes:
+      # Logs persistent speichern
+      - geiger_logs_prod:/var/log
+    networks:
+      - geiger_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3005/fs/"]
+      interval: 60s
+      timeout: 15s
+      retries: 5
+      start_period: 60s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # Resource Limits (bei Bedarf anpassen)
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+networks:
+  geiger_network:
+    driver: bridge
+
+volumes:
+  geiger_logs_prod:
+    driver: local

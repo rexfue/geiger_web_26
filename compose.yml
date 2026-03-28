@@ -1,0 +1,13 @@
+services:
+  geiger2:
+    image: docker.citysensor.de/geiger_web_26:latest
+    container_name: geiger2
+    restart: unless-stopped
+    env_file:
+      - .env.local
+    volumes:
+      - ${LOCALDIR}/log:/var/log
+    environment:
+      TZ: ${TZ:-Europe/Berlin}
+    ports:
+      - "3005:3005"

@@ -2,3 +2,6 @@
 Feinstaub_ToDos.pdf
 this_is_MacBig
 .idea
+.env
+.env.local.custom
+.DS_Store

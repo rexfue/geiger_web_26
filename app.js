@@ -40,6 +40,7 @@ async function checkHost(req, res, next) {
         (req.headers.host == 'multigeiger.rexfue.de') ||
         (req.headers.host == 'multigeiger.citysensor.de') ||
         (req.headers.host == 'test2.citysensor.de') ||
+        (req.headers.host == 'geiger2.citysensor.de') ||
         (req.headers.host == 'localhost:'+PORT) ||
         (req.headers.host == 'nuccy:3005') ||
         (req.headers.host == 'h2953026.stratoserver.net:8082') ||
