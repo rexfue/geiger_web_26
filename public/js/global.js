@@ -383,7 +383,7 @@ $(document).ready(function() {
             console.log(`New zoom: ${map.getZoom()}`);
         });
 
-//        await buildAKWs();
+        await buildAKWs();
         await buildMarkers(bounds);
 
 

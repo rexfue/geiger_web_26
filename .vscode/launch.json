@@ -20,6 +20,7 @@
                 "<node_internals>/**"
             ],
             "env": {
+                "SERVERPORT": "3006",
                 "MONGOHOST": "217.72.203.152",
                 "MONGOPORT": "27037",
                 "MONGOAUTH": "true",

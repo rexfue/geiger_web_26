@@ -138,13 +138,12 @@ router.get('/getaktdata/', async function (req, res) {
     }
 });
 
-/* ===============================================================
-// AKW (Nuclear Power Plant) FUNCTIONS - COMMENTED OUT FOR NOW
-// Will be needed later, so not deleting
+// ===============================================================
+// AKW (Nuclear Power Plant) FUNCTIONS
 // ===============================================================
 
 // Fetch all akw data out of the dbase
-router.get('/getakwdata/', async function (req, res) {
+router.get('/getakwdata', async function (req, res) {
     const db = req.app.get('dbase');                        // db wird in req übergeben (von app.js)
     let collection = db.collection('akws');                 // die 'korrelation' verwenden
     let erg = [];
@@ -215,7 +214,6 @@ router.get('/getakwdata/', async function (req, res) {
         return;
     }
 });
-*/
 
 router.get('/getStuttgart/', function (req, res) {
     fs.readFile('public/Stuttgart.gpx',function(err,data) {
