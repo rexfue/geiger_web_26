@@ -4,7 +4,6 @@ var express = require('express');
 var router = express.Router();
 var moment = require('moment');
 const axios = require('axios');
-let $ = require('jquery');
 var fs = require('fs');
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';

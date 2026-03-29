@@ -1,7 +1,7 @@
 {
   "name": "geiger2",
-  "version": "3.0.0",
-  "date": "2022-03-16",
+  "version": "3.0.1",
+  "date": "2026-03-29",
   "description": "Graphics for multigeiger sensors",
   "main": "app.js",
   "scripts": {
@@ -11,20 +11,19 @@
   "author": "rxf@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.26.1",
-    "body-parser": "^1.19.2",
-    "bootstrap": "^5.1.3",
-    "d3": "^7.3.0",
-    "express": "^4.17.3",
+    "axios": "^1.14.0",
+    "body-parser": "^2.2.2",
+    "bootstrap": "^5.3.8",
+    "d3": "^7.9.0",
+    "express": "^4.21.2",
     "gpx-parse": "^0.10.4",
-    "jquery": "^3.6.0",
-    "jquery-ui": "^1.13.1",
-    "leaflet": "^1.7.1",
+    "jquery-ui": "^1.14.2",
+    "leaflet": "^1.9.4",
     "math": "0.0.3",
-    "mathjs": "^10.4.0",
-    "moment": "^2.29.1",
-    "mongodb": "^4.4.1",
-    "npm": "^8.5.4",
-    "pug": "^3.0.2"
+    "mathjs": "^15.1.1",
+    "moment": "^2.30.1",
+    "mongodb": "^7.1.1",
+    "npm": "^11.12.1",
+    "pug": "^3.0.4"
   }
 }

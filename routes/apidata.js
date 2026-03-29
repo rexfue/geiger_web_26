@@ -4,7 +4,6 @@ const router = express.Router();
 const moment = require('moment');
 const mathe = require('mathjs');
 const fs = require('fs');
-const $ = require('jquery');
 const util = require('./utilities');
 
 
