@@ -1,10 +1,61 @@
-node-modules
-PYTHON
-.gitignore
-.dockerignore
-build_and_copy.sh
-buildit.sh
-copycontainder.sh
+# Node modules
+node_modules/
+
+# Logs
+logs/
+log/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+dist/
+build/
+bower_components/
+
+# Test, coverage, and debug
+coverage/
+.nyc_output/
+*.out
+*.tmp
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.bak
+*~
+
+# Mac system files
+.DS_Store
+
+# Environment files
+.env
+.env.*
+
+# Dumps and large sensor data
+akws/dump/
+*.bson
+*.metadata.json
+
+# Public generated files
+public/js/*.map
+public/js/*.tmp
+
+# Ignore Python cache (if any)
+__pycache__/
+*.pyc
+
+# Project-specific
+Feinstaub_ToDos.pdf
+this_is_MacBig
+akws
+
+# Build/Deployment files (nicht ins Image kopieren)
 docker-compose.yml
+docker-compose.*.yml
+Dockerfile
 Dockerfile*
-nginx-proxy
+*.sh
+*.md
