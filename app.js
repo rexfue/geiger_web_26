@@ -37,15 +37,10 @@ let requested;
 async function checkHost(req, res, next) {
     if (
         (req.headers.host == 'test1.rexfue.de') ||
-        (req.headers.host == 'multigeiger.rexfue.de') ||
-        (req.headers.host == 'multigeiger.citysensor.de') ||
-        (req.headers.host == 'test2.citysensor.de') ||
+        (req.headers.host == 'multigeiger.ecocurious.de') ||
         (req.headers.host == 'geiger2.citysensor.de') ||
         (req.headers.host == 'localhost:'+PORT) ||
-        (req.headers.host == 'nuccy:3005') ||
-        (req.headers.host == 'h2953026.stratoserver.net:8082') ||
-        (req.headers.host == '213.136.85.253:'+PORT) ||
-        (req.headers.host == '192.168.178.78:'+PORT) ||
+        (req.headers.host == '82.165.92.252') ||
         (req.headers.host == 'macbig:'+PORT)                 //Port is important if the url has it
     ) {
         req.url = '/fs' + req.url;

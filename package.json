@@ -1,7 +1,7 @@
 {
   "name": "geiger2",
-  "version": "3.1.0",
-  "date": "2026-03-29",
+  "version": "3.1.1",
+  "date": "2026-03-30",
   "description": "Graphics for multigeiger sensors",
   "main": "app.js",
   "scripts": {
