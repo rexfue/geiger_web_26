@@ -64,34 +64,51 @@ function getSensorName(db,sid) {
 // fetch the properties for the given sensor
 async function getSensorProperties(db,sid) {
     let start = new Date();
-    console.log("Get properties for", sid,"from DB");
-    let sensorEntries = [{'sid':sid}];
+    console.log("Get properties for", sid, "from DB");
+    let sensorEntries = [{ sid: sid }];
     let coll = db.collection('properties');
     let properties;
     try {
-        properties = await coll.findOne({_id: sid});
-    }
-    catch(e) {
-        console.log("getSensorProperties",e);
+        properties = await coll.findOne({ _id: sid });
+    } catch (e) {
+        console.log("getSensorProperties", e);
         return {};
     }
     console.log("got properties - time:", new Date() - start);
-    if(properties == null) return null;
+    if (properties == null) return null;
     // name is now an array, get the current (last) entry
     let currentName = properties.name;
     if (Array.isArray(properties.name)) {
         currentName = properties.name[properties.name.length - 1].name;
     }
-    
     // Overwrite name field with string for frontend compatibility
     properties.name = currentName;
     sensorEntries[0]['name'] = currentName;
-    
-    // Check if othersensors exists (might not in new DB structure)
-    if (!properties.othersensors || properties.othersensors.length === 0) {
-        properties.othersensors = sensorEntries;
-        return properties;
+
+    // Neue Logik: Immer nur den aktuellen Sensor eintragen, dann nach passendem thp-Sensor suchen
+    let newSid = parseInt(sid) + 1;
+    let properties2 = await coll.findOne({ _id: newSid });
+    if (properties2) {
+        // Prüfe Typ (name enthält "BME" oder "thp") und gleiche Koordinaten
+        let name2 = properties2.name;
+        if (Array.isArray(name2)) {
+            name2 = name2[name2.length - 1].name;
+        }
+        let isTHP = (properties2.type && properties2.type.toLowerCase() === 'thp');
+        let sameLocation = false;
+        try {
+            const loc1 = properties.location && Array.isArray(properties.location) && properties.location[0] && properties.location[0].id;
+            const loc2 = properties2.location && Array.isArray(properties2.location) && properties2.location[0] && properties2.location[0].id;
+            sameLocation = (loc1 !== undefined && loc2 !== undefined && loc1 === loc2);
+        } catch (e) {
+            sameLocation = false;
+        }
+        if (isTHP && sameLocation) {
+            sensorEntries.push({ sid: newSid, name: name2 });
+        }
     }
+    properties.othersensors = sensorEntries;
+    return properties;
     
     let mustbeobject = false;
     for(let i = 0, j=1; i<properties.othersensors.length; i++) {
